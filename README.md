@@ -16,4 +16,33 @@
 
 - Relase
 
-`heroku container:release web`
+`heroku container:release web` (cli)
+
+(REST API)
+```shell
+HEROKU_APP_ID=evening-reaches-68081
+HEROKU_IMAGE_ID=$(docker inspect registry.heroku.com/evening-reaches-68081/web --format={{.Id}})
+HEROKU_TOKEN=$(heroku auth:token)
+
+
+curl -X PATCH https://api.heroku.com/apps/$APP_ID/formation \
+  -d '{
+  "updates": [
+    {
+      "type": "web",
+      "docker_image": $HEROKU_IMAGE_ID
+    }
+  ]
+}' \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/vnd.heroku+json; version=3.docker-releases" \
+  -H "Authorization: Bearer $HEROKU_TOKEN"
+```
+
+# Heroku
+## Generate Heroku token
+
+`heroku authorizations:create  -d 'getting started token'`
+
+## Fetch token
+`heroku auth:token`
