@@ -67,7 +67,7 @@ jobs:
         push: ${{ steps.config.outputs.push-to-registry == 'true' }}
         labels: ${{ steps.meta.outputs.labels }}
         tags: ${{ steps.meta.outputs.tags }}
-        build-args: |
-          MAKEFLAGS=-j${{ env.NPROC }}
+        # build-args: |
+        #   MAKEFLAGS=-j${{ env.NPROC }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
