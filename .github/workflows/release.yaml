@@ -14,10 +14,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-      with:
-        submodules: true
-        lfs: true
-        token: ${{ secrets.GH_USER_SWAG_BOT }}
+      # with:
+      #   submodules: true
+      #   lfs: true
+      #   token: ${{ secrets.GH_USER_SWAG_BOT }}
 
     - name: Setup
       id: config
