@@ -19,7 +19,7 @@ jobs:
       uses: actions/cache@v1
       with:
         path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-black-19.10b0
+        key: ${{ runner.os }}-pip-pytest-6.2.5
         restore-keys: |
           ${{ runner.os }}-pip-
 
@@ -28,4 +28,4 @@ jobs:
       run: pip install pytest
 
     - name: Run pytest
-      run: pytest webapp/tests || true
+      run: pytest webapp/test.py || true
