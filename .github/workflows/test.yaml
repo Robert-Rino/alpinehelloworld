@@ -28,4 +28,4 @@ jobs:
       run: pip install pytest
 
     - name: Run pytest
-      run: pytest webapp/test.py || true
+      run: pytest webapp/tests.py || true
