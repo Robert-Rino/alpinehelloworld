@@ -53,6 +53,14 @@ jobs:
     #     username: _json_key
     #     password: ${{ secrets.GOOGLE_SA_GCR_JSON }}
 
+    - name: Setup - Heroku Container Registry
+      uses: docker/login-action@v1
+      if: ${{ steps.config.outputs.push-to-registry }}
+      with:
+        registry: asia-docker.pkg.dev
+        username: _
+        password: ${{ secrets.HEROKU_REGISTRY_TOKEN }}
+
     - name: Setup - Github Container Registry
       uses: docker/login-action@v1
       if: ${{ steps.config.outputs.push-to-registry }}
@@ -67,6 +75,7 @@ jobs:
       with:
         images: |
           ghcr.io/${{ github.repository }}
+          registry.heroku.com/evening-reaches-68081/web
         tags: |
           type=ref,event=branch
           type=ref,event=tag
