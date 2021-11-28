@@ -57,7 +57,7 @@ jobs:
       uses: docker/login-action@v1
       if: ${{ steps.config.outputs.push-to-registry }}
       with:
-        registry: asia-docker.pkg.dev
+        registry: registry.heroku.com
         username: _
         password: ${{ secrets.HEROKU_REGISTRY_TOKEN }}
 
