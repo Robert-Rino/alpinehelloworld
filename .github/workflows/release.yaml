@@ -82,7 +82,7 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          a901002666/alpinehelloworld
+          a901002666/heroku-alpinehelloworld
           ghcr.io/${{ github.repository }}
           registry.heroku.com/evening-reaches-68081/web
         tags: |
