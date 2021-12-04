@@ -83,7 +83,7 @@ jobs:
       uses: docker/metadata-action@v3
       with:
         images: |
-          registry.hub.docker.com/a901002666/${{ github.repository }}
+          a901002666/${{ github.repository }}
           ghcr.io/${{ github.repository }}
           registry.heroku.com/evening-reaches-68081/web
         tags: |
