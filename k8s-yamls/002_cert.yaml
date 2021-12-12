@@ -1,0 +1,7 @@
+apiVersion: networking.gke.io/v1
+kind: ManagedCertificate
+metadata:
+  name: k8s-helloworld-managed-cert
+spec:
+  domains:
+    - k8s-helloworld.nino.run
