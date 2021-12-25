@@ -1,4 +1,11 @@
 apiVersion: v1
+data:
+  version: sha-08f3303
+kind: ConfigMap
+metadata:
+  name: k8s-helloworld-configmap-f2657kkk68
+---
+apiVersion: v1
 kind: Service
 metadata:
   name: k8s-helloworld
@@ -31,9 +38,13 @@ spec:
       - env:
         - name: PORT
           value: "8080"
-        image: ghcr.io/robert-rino/heroku-alpinehelloworld:sha-5515f99
+        image: ghcr.io/robert-rino/heroku-alpinehelloworld:sha-08f3303
         name: server
         ports:
         - containerPort: 8080
           name: server
           protocol: TCP
+  volumes:
+  - configMap:
+      name: k8s-helloworld-configmap
+    name: k8s-helloworld-configmap
