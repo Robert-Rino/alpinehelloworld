@@ -1,4 +1,4 @@
-name: deploy-deploy-app
+name: deploy-app
 on:
   workflow_dispatch:
     inputs:
