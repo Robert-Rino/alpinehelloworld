@@ -126,7 +126,7 @@ jobs:
               owner: owner,
               repo: repo,
               deployment_id: context.payload.inputs['deployment-id'],
-              state: 'completed',
+              state: 'success',
             })
           }
           
