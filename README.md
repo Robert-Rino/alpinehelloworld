@@ -49,6 +49,7 @@ curl -X PATCH https://api.heroku.com/apps/$APP_ID/formation \
 
 
 # K8s
+```shell
 export IMAGE=ghcr.io/robert-rino/heroku-alpinehelloworld
 export IMAGE_TAG=sha-5515f99
 
@@ -58,3 +59,4 @@ kustomize edit add configmap k8s-helloworld-configmap --from-literal=version=$IM
 kustomize build . -o dev.yaml
 
 kubectl apply -f dev.yaml
+```
