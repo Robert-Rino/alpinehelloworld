@@ -48,12 +48,7 @@ jobs:
           if (context.payload.inputs['deployment-id'] != null){
             let [owner, repo] = context.payload.repository.full_name.split('/');
             console.log(owner, repo)
-
-            
-
           }
-
-          
 
     - name: Checkout
       uses: actions/checkout@v2
