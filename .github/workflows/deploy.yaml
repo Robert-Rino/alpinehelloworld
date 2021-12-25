@@ -34,7 +34,7 @@ jobs:
         working-directory: ./deployments
 
     steps:
-    - name: Mark deployment completed
+    - name: Mark deployment in_progress
       uses: actions/github-script@v5
       with:
         script: |
@@ -50,8 +50,6 @@ jobs:
             })
 
           }
-
-          
 
     - name: Checkout
       uses: actions/checkout@v2
@@ -102,7 +100,7 @@ jobs:
         kubectl apply -f ../k8s-template/001_deployment.yaml
         kubectl get services -o wide
 
-    - name: Mark deployment completed
+    - name: Mark deployment success
       uses: actions/github-script@v5
       with:
         script: |
