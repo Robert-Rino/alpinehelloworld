@@ -43,13 +43,13 @@ jobs:
       uses: actions/github-script@v5
       with:
         script: |
-          if (context.event.inputs.deployment-id != null){
-            let [owner, repo] = context.repository.split('/');
+          if (context.payload.inputs['deployment-id'] != null){
+            let [owner, repo] = context.repository.full_name.split('/');
 
             octokit.rest.repos.createDeploymentStatus({
               owner,
               repo,
-              context.event.inputs.deployment-id,
+              context.payload.inputs['deployment-id'],
               'in_progress',
             });
           }
@@ -115,13 +115,13 @@ jobs:
       uses: actions/github-script@v5
       with:
         script: |
-          if (context.event.inputs.deployment-id != null){
-            let [owner, repo] = context.repository.split('/')
+          if (context.payload.inputs['deployment-id'] != null){
+            let [owner, repo] = context.repository.full_name.split('/');
 
             octokit.rest.repos.createDeploymentStatus({
               owner,
               repo,
-              context.event.inputs.deployment-id,
+              context.payload.inputs['deployment-id'],
               'completed',
             });
           }
