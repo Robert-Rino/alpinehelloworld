@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-helloworld
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: helloworld
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: helloworld
+  name: helloworld
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworld
+  template:
+    metadata:
+      labels:
+        app: helloworld
+    spec:
+      containers:
+      - env:
+        - name: PORT
+          value: "8080"
+        image: alpinehelloworld:ninomanual
+        name: server
+        ports:
+        - containerPort: 8080
+          name: server
+          protocol: TCP

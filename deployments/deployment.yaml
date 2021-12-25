@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: server
-        image: ghcr.io/robert-rino/heroku-alpinehelloworld:sha-02203f3
+        image: IMAGE:TAG
         env:
         - name: PORT
           value: '8080'
@@ -38,3 +38,4 @@ spec:
         - containerPort: 8080
           protocol: TCP
           name: server
+
