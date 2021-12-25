@@ -33,6 +33,7 @@ jobs:
       run:
         working-directory: ./deployments
 
+    steps:
     - name: Mark deployment completed
       uses: actions/github-script@v5
       with:
