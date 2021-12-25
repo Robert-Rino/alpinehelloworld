@@ -62,6 +62,7 @@ jobs:
     - name: Generate deployment.yaml
       run: |-
         ./kustomize edit set image IMAGE:TAG=${{ github.event.inputs.image-name}}:${{ github.event.inputs.image-tag}}
+        ./kustomize edit add configmap k8s-helloworld-configmap --from-literal=version=${{github.event.inputs.image-tag}}
         ./kustomize build . -o ../k8s-template/001_deployment.yaml
 
     - name: Commit report
