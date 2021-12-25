@@ -48,7 +48,7 @@ jobs:
           octokit.rest.repos.createDeploymentStatus({
             owner,
             repo,
-            `${github.event.inputs.deployment-id}`,
+            ${github.event.inputs.deployment-id},
             'in_progress',
           });
           
@@ -121,7 +121,7 @@ jobs:
           octokit.rest.repos.createDeploymentStatus({
             owner,
             repo,
-            `${github.event.inputs.deployment-id}`,
+            ${github.event.inputs.deployment-id},
             'completed',
           });
           
