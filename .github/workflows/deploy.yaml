@@ -58,13 +58,14 @@ jobs:
         curl -Lo kustomize https://github.com/kubernetes-sigs/kustomize/releases/download/v4.4.1/kustomize_4.4.1_linux_amd64
         chmod u+x ./kustomize
         export PATH=$PATH:$($pwd)
+        cat $PATH
 
     # Deploy the Docker image to the GKE cluster
     - name: Generate deployment.yaml
       run: |-
-        ./kustomize edit set image IMAGE:TAG=${{ github.event.inputs.image-name}}:${{ github.event.inputs.image-tag}}
-        ./kustomize edit add configmap k8s-helloworld-configmap --from-literal=version=${{github.event.inputs.image-tag}} --disableNameSuffixHash
-        ./kustomize build . -o ../k8s-template/001_deployment.yaml
+        kustomize edit set image IMAGE:TAG=${{ github.event.inputs.image-name}}:${{ github.event.inputs.image-tag}}
+        kustomize edit add configmap k8s-helloworld-configmap --from-literal=version=${{github.event.inputs.image-tag}} --disableNameSuffixHash
+        kustomize build . -o ../k8s-template/001_deployment.yaml
 
     - name: Commit report
       run: |
