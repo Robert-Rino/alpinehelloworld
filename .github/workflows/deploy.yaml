@@ -39,18 +39,17 @@ jobs:
       uses: actions/github-script@v5
       with:
         script: |
-          if (${github.event.inputs.deployment-id} == null){
-            return
-          } 
+          if (${github.event.inputs.deployment-id} != null){
+            let [owner, repo] = context.repository.split('/')
 
-          let [owner, repo] = context.repository.split('/')
+            octokit.rest.repos.createDeploymentStatus({
+              owner,
+              repo,
+              ${github.event.inputs.deployment-id},
+              'in_progress',
+            });
+          }
 
-          octokit.rest.repos.createDeploymentStatus({
-            owner,
-            repo,
-            ${github.event.inputs.deployment-id},
-            'in_progress',
-          });
           
 
     - name: Checkout
@@ -112,17 +111,15 @@ jobs:
       uses: actions/github-script@v5
       with:
         script: |
-          if (${github.event.inputs.deployment-id} == null){
-            return
-          } 
+          if (${github.event.inputs.deployment-id} != null){
+            let [owner, repo] = context.repository.split('/')
 
-          let [owner, repo] = context.repository.split('/')
-
-          octokit.rest.repos.createDeploymentStatus({
-            owner,
-            repo,
-            ${github.event.inputs.deployment-id},
-            'completed',
-          });
+            octokit.rest.repos.createDeploymentStatus({
+              owner,
+              repo,
+              ${github.event.inputs.deployment-id},
+              'completed',
+            });
+          }
           
       
