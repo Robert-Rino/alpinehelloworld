@@ -45,13 +45,8 @@ jobs:
         script: |
           if (context.payload.inputs['deployment-id'] != null){
             let [owner, repo] = context.repository.full_name.split('/');
+            console.log(owner, repo)
 
-            octokit.rest.repos.createDeploymentStatus({
-              owner,
-              repo,
-              context.payload.inputs['deployment-id'],
-              'in_progress',
-            });
           }
 
           
