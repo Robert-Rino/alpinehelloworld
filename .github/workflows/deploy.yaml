@@ -34,17 +34,25 @@ jobs:
         working-directory: ./deployments
 
     steps:
+    - name: View context attributes
+      uses: actions/github-script@v5
+      with:
+        script: console.log(context)
 
     - name: Mark deployment completed
       uses: actions/github-script@v5
       with:
         script: |
+          if (context.event.inputs.deployment-id != null){
+            let [owner, repo] = context.repository.split('/');
+
             octokit.rest.repos.createDeploymentStatus({
               owner,
               repo,
-              ${github.event.inputs.deployment-id},
+              context.event.inputs.deployment-id,
               'in_progress',
             });
+          }
 
           
 
@@ -107,13 +115,13 @@ jobs:
       uses: actions/github-script@v5
       with:
         script: |
-          if (${github.event.inputs.deployment-id} != null){
+          if (context.event.inputs.deployment-id != null){
             let [owner, repo] = context.repository.split('/')
 
             octokit.rest.repos.createDeploymentStatus({
               owner,
               repo,
-              ${github.event.inputs.deployment-id},
+              context.event.inputs.deployment-id,
               'completed',
             });
           }
