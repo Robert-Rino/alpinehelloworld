@@ -80,7 +80,6 @@ jobs:
         export PATH=$PATH:$($pwd)
         echo $PATH
 
-    # Deploy the Docker image to the GKE cluster
     - name: Generate deployment.yaml
       run: |-
         kustomize edit set image IMAGE:TAG=${{ github.event.inputs.image-name}}:${{ github.event.inputs.image-tag}}
