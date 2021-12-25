@@ -34,12 +34,13 @@ spec:
         env:
         - name: PORT
           value: '8080'
+        - name: version
+          valueFrom:
+            configMapKeyRef:
+              name: k8s-helloworld-configmap
+              key: version
         ports:
         - containerPort: 8080
           protocol: TCP
           name: server
-      volumes:
-      - name: k8s-helloworld-configmap
-        configMap:
-          name: k8s-helloworld-configmap
 
