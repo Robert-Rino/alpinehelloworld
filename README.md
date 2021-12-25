@@ -46,3 +46,15 @@ curl -X PATCH https://api.heroku.com/apps/$APP_ID/formation \
 
 ## Fetch token
 `heroku auth:token`
+
+
+# K8s
+export IMAGE=ghcr.io/robert-rino/heroku-alpinehelloworld
+export IMAGE_TAG=sha-5515f99
+
+kustomize edit set image IMAGE:TAG=$IMAGE:$IMAGE_TAG
+kustomize edit add configmap k8s-helloworld-configmap --from-literal=version=$IMAGE_TAG --disableNameSuffixHash
+
+kustomize build . -o dev.yaml
+
+kubectl apply -f dev.yaml
