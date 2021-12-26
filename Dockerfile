@@ -6,7 +6,6 @@ RUN         pip install --no-cache-dir -qr requirements.txt
 FROM        python:3.9.7-alpine3.14
 COPY        --from=builder /usr/local /usr/local
 
-# Add our code
 ADD         ./webapp /opt/webapp/
 WORKDIR     /opt/webapp
 			
