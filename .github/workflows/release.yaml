@@ -19,10 +19,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-      # with:
-      #   submodules: true
-      #   lfs: true
-      #   token: ${{ secrets.GH_USER_SWAG_BOT }}
 
     - name: Setup
       id: config
@@ -64,7 +60,5 @@ jobs:
         push: ${{ steps.config.outputs.push-to-registry == 'true' }}
         labels: ${{ steps.meta.outputs.labels }}
         tags: ${{ steps.meta.outputs.tags }}
-        # build-args: |
-        #   MAKEFLAGS=-j${{ env.NPROC }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
