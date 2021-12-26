@@ -18,15 +18,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Setup
-      id: config
-      run: |
-        NPROC=$(nproc)
+    # - name: Setup
+    #   id: config
+    #   run: |
+    #     NPROC=$(nproc)
 
-        echo "NPROC=$NPROC" >> $GITHUB_ENV
-        echo "::set-output name=NPROC::$NPROC"
+    #     echo "NPROC=$NPROC" >> $GITHUB_ENV
+    #     echo "::set-output name=NPROC::$NPROC"
 
-        [[ $GITHUB_REF =~ ^refs\/(tags\/|heads\/(master|release|hotfix)$) ]] && echo "::set-output name=push-to-registry::true" || true
+    #     [[ $GITHUB_REF =~ ^refs\/(tags\/|heads\/(master|release|hotfix)$) ]] && echo "::set-output name=push-to-registry::true" || true
 
     - name: Setup - buildx
       uses: docker/setup-buildx-action@v1
