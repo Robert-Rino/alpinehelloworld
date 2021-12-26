@@ -10,5 +10,3 @@ ADD         ./webapp /opt/webapp/
 WORKDIR     /opt/webapp
 			
 CMD         gunicorn --bind 0.0.0.0:$PORT wsgi --log-level "debug" 
-
-# sodfijsdoifj
