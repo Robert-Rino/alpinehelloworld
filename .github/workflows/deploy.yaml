@@ -4,7 +4,7 @@ on:
     inputs:
       image-name:
         descriptino: image to daploy
-        default: ghcr.io/${{ github.repository }}
+        default: ghcr.io/robert-rino/alpinehelloworld
         required: true
       environment: 
         description: deploy environment
