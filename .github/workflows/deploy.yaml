@@ -4,7 +4,7 @@ on:
     inputs:
       image-name:
         descriptino: image to daploy
-        default: ghcr.io/robert-rino/alpinehelloworld
+        default: ghcr.io/robert-rino/heroku-alpinehelloworld
         required: true
       environment: 
         description: deploy environment
