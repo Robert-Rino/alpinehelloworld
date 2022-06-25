@@ -42,7 +42,7 @@ jobs:
     
     - name: Debug
       run: |
-        echo "::set-output output=${{ fromJSON(steps.meta.outputs.json) }}
+        echo "::set-output output=${{ fromJSON(steps.meta.outputs.json) }}"
 
     - name: Build
       uses: docker/build-push-action@v2
