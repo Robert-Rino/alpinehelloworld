@@ -43,6 +43,9 @@ jobs:
     - name: Debug
       run: |
         echo "::set-output output=${{ fromJSON(steps.meta.outputs.json) }}"
+        echo "::set-output output=${{ steps.meta.tags }}"
+        echo "::set-output output=${{ steps.meta.labels }}"
+        echo "::set-output output=${{ steps.meta.version }}"
 
     - name: Build
       uses: docker/build-push-action@v2
