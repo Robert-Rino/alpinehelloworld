@@ -61,5 +61,3 @@ kustomize build . -o dev.yaml
 
 kubectl apply -f dev.yaml
 ```
-
-new feature
